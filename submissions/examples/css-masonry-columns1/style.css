@@ -1,0 +1,261 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #0f172a; /* Dark Slate Background */
+  color: #e2e8f0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- 2. Typography & Links --- */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* --- 3. Header & Footer --- */
+header, footer {
+  text-align: center;
+  padding: 3rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+header code {
+  background: #1e293b;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: #38bdf8;
+  font-size: 0.9em;
+  border: 1px solid #334155;
+}
+
+footer {
+  padding: 2rem 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  border-top: 1px solid #1e293b;
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* --- 4. Masonry Layout Container --- */
+.masonry {
+  column-count: 1;
+  column-gap: 1.5rem;
+  padding: 0 1.5rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 640px) {
+  .masonry {
+    column-count: 2;
+  }
+  
+  header h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry {
+    column-count: 3;
+  }
+  
+  header h1 {
+    font-size: 3.5rem;
+  }
+}
+
+/* --- 5. Card Component --- */
+.card {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  
+  margin-bottom: 1.5rem;
+  background: #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #334155;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  border-color: #475569;
+}
+
+/* Card Image/Icon Area */
+.card__img {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay for better icon visibility */
+.card__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    transparent 60%, 
+    rgba(30, 41, 59, 0.9) 100%);
+  pointer-events: none;
+}
+
+.card__icon {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .card__icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+/* --- 6. Card Variations --- */
+
+/* Tall Card */
+.card--tall .card__img {
+  height: 220px;
+}
+
+/* Wide Card - Special styling */
+.card--wide {
+  border: 1px solid #38bdf8;
+  box-shadow: 0 4px 6px -1px rgba(56, 189, 248, 0.1), 
+              0 2px 4px -1px rgba(56, 189, 248, 0.06);
+}
+
+.card--wide:hover {
+  border-color: #7dd3fc;
+  box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.2), 
+              0 10px 10px -5px rgba(56, 189, 248, 0.1);
+}
+
+.card--wide .card__img {
+  height: 140px;
+}
+
+/* --- 7. Card Content --- */
+.card__body {
+  padding: 1.5rem;
+}
+
+.card__body h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.card__body p {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* --- 8. Utility Classes --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --- 9. Print Styles --- */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .card {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+  
+  header, footer {
+    padding: 1rem;
+  }
+}
+
+/* --- 10. Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- 11. Focus Styles for Accessibility --- */
+:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+/* --- 12. Selection Color --- */
+::selection {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
